@@ -1,0 +1,84 @@
+<div class="home page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="title">
+          <img src="assets/svg/list.svg">
+          <span>SE315 Todo List App</span>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form class="form-field d-flex justify-content-center">
+          <mat-form-field class="form-input">
+            <input maxlength="60" matInput placeholder="Enter the to do" #newTodo>
+          </mat-form-field>
+          <mat-form-field class="form-select">
+            <mat-label>Priority</mat-label>
+            <mat-select #selectOption>
+              <mat-option value="high">High</mat-option>
+              <mat-option value="normal">Normal</mat-option>
+              <mat-option value="low">Low</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="form-picker">
+            <input matInput [matDatepicker]="picker1" placeholder="End Date" [formControl]="endDate">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker [startAt]="startDateForPicker" #picker1></mat-datepicker>
+          </mat-form-field>
+          <button mat-raised-button (click)="addTodo(newTodo,selectOption)" class="form-button" color="primary"
+            type="button">Add</button>
+        </form>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 top">
+        <mat-card class="d-flex main-card cards">
+          <div class="col-md-12">
+            <div class="card-title waiting-card-title">
+              <img src="assets/svg/timeline.svg" alt="">
+              <span>Waiting</span>
+            </div>
+            <mat-card class="d-flex waiting-card">
+              <mat-list *ngIf="todo_list" role="list" class="todo-list">
+                <mat-list-item *ngFor="let todo of todo_list" [ngClass]="todo.priority" role="listitem">
+                  <span class="todo-item">{{todo.todo | titlecase}}</span>
+                  <div class="date-flex">
+                    <span class="todo-date" matTooltip="Added:{{todo.date}}" matTooltipPosition="above"><mat-icon matTooltip="End:{{todo.endDate}}" matTooltipPosition="below">date_range</mat-icon></span>           
+                  </div>
+                  <div class="list-button">
+                    <mat-icon matTooltip="Change priority" (click)="priorityChange(todo)">swap_horizontal_circle
+                    </mat-icon>
+                    <mat-icon matTooltip="Complete the todo" (click)="completeTodo(todo)">check_circle_outline</mat-icon>
+                  </div>
+                </mat-list-item>
+              </mat-list>
+            </mat-card>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 bottom">
+        <mat-card class="right-main-card">
+          <div class="card-title complete-card-title">
+            <img src="assets/svg/checked.svg" alt="">
+            <span>Completed</span>
+          </div>
+          <mat-card class="d-flex complete-card">
+            <mat-list role="list" *ngIf="complete_todo" class="todo-list">
+              <mat-list-item *ngFor="let todo of complete_todo" class="todo-list-complete" role="listitem">
+                <span class="todo-item">{{ todo.todo | titlecase }}</span>
+                <div class="list-button">
+                  <mat-icon (click)="backToWaiting(todo)" matTooltip="Back to waiting">arrow_back</mat-icon>
+                  <mat-icon (click)="deleteComplete(todo)" matTooltip="Delete the completed todo">delete</mat-icon>
+                </div>
+              </mat-list-item>
+            </mat-list>
+          </mat-card>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

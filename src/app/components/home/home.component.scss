@@ -1,0 +1,182 @@
+$font:'consolas';
+
+.home{
+    
+    &.page{
+        .title{
+            text-align: center;
+            font-family: $font;
+
+            img{
+                width: 48px;
+                height: 48px;
+                margin-right:10px;
+            }
+            
+        }
+        .form-field{
+           
+            .form-input{
+                width: 30%;             
+                margin-right: 5px;
+            }
+            .form-select{
+                width: 10%;             
+                margin-right: 5px;
+            }
+            .form-button{
+                margin-left: 10px;
+                width: 50px;
+                height: 50px;
+            }
+            .form-picker{
+                width: 12%;
+            }
+        }
+        .top{
+            .main-card{
+                background-color: #E1E1E1;
+                .card-title{
+                    text-align: center;
+                    span{
+                        margin-left:5px;
+                        font-family: $font;
+                        letter-spacing: 1.1px;
+                        font-size: 25px;
+                    }
+                    img{
+                        width: 36px;
+                        height: 36px;
+                    }
+                }
+                mat-card{
+                    background-color: #f3f3f3; 
+                    .todo-list{                  
+                        width: 100%;
+                        mat-list-item{
+                            color: white;
+                            font-family: $font;
+                            font-size: 14px;                         
+                            border: 1px solid;
+                            border-color: gainsboro;
+                            border-radius: 5px;
+                            margin-bottom: 3px;
+                            cursor: pointer;
+                            .todo-item{
+                                flex:2;
+                            }
+                            .date-flex{
+                                margin-top:5px;
+                            }
+                            .todo-date{                       
+                                opacity: 0;      
+                                transition: .4s;            
+                            }
+                            .list-button{
+                                padding-top: 5px;
+                                opacity: 0;
+                                transition:.3s;
+                                .checkbox{
+                                    font-size:30px;
+                                }
+                            }
+                            mat-icon{
+                                margin-right: 10px;
+                                cursor: pointer;                           
+                                transition: .2s;
+                            }
+                            mat-icon:hover{
+                                color:#8AFF2F;
+                                transform: rotate(360deg);
+                            }
+
+                        }
+                        mat-list-item:hover{
+                            .list-button{
+                                opacity: 1;
+                            }
+                            .todo-date{
+                                opacity: 1;
+                            }
+                        }
+
+                        .low{                           
+                            background-color: #0D67E0;
+                        }
+                        .normal{
+                            background-color: #B0B000;
+                        }
+                        .high{
+                            background-color: #BD0303;
+                        }
+                    }        
+                }
+            }
+
+        }
+        .bottom{
+            .right-main-card{
+                background-color: #E1E1E1;
+                .complete-card-title{
+                
+                    text-align: center;
+                    span{
+                        margin-left:5px;
+                        font-family: $font;
+                        letter-spacing: 1.1px;
+                        font-size: 25px;
+                    }
+                    img{
+                        width: 36px;
+                        height: 36px;
+                    }
+                }
+                .complete-card{
+                    background-color: #f3f3f3; 
+                    .todo-list{                  
+                        width: 100%;
+                        mat-list-item{
+                            font-family: $font;
+                            font-size: 12px;                         
+                            border: 1px solid;
+                            border-color: gainsboro;
+                            border-radius: 5px;
+                            margin-bottom: 3px;
+                            .todo-item{
+                                flex:1;
+                            }
+                            .list-button{
+                                padding-top: 5px;
+                                opacity: 0;
+                                transition:.3s;
+                            }
+                            mat-icon{
+                                margin-left: 5px;
+                                cursor: pointer;
+                                color:white;
+                                
+                                transition: .2s;
+                            }
+                            mat-icon:hover{
+                                color:#F44336;
+                                transform: rotate(360deg);
+                            }
+                        }
+                        mat-list-item:hover{
+                            .list-button{
+                                opacity: 1;
+                            }
+                        }
+                        .todo-list-complete{
+                          color: white;
+                          background-color: #148003;
+                        }
+                    }
+    
+                }
+            }
+
+        }
+
+    }
+}
